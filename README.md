@@ -19,6 +19,7 @@ Below, you will find the link to the different challenges. Each of them are a di
 - [Fullstack Software Engineer Senior](https://github.com/payvision-development/recruitment-challenges/tree/fullstack-engineer)
 - [Test Automation Engineer](https://github.com/payvision-development/recruitment-challenges/tree/qa-engineer)
 
+---
 
 # Software Engineer - JS
 
