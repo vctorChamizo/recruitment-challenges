@@ -7,8 +7,10 @@ function Check (filePath) {
 
   let fileContent = fs.readFileSync(filePath, 'utf8')
   let lines = fileContent.split('\n')
+
   for (let line of lines) {
     let items = line.split(',')
+
     let order = {
       orderId: Number(items[0]),
       dealId: Number(items[1]),
@@ -19,6 +21,7 @@ function Check (filePath) {
       zipCode: items[6],
       creditCard: items[7]
     }
+    
     orders.push(order)
   }
 
