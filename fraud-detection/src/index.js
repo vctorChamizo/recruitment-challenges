@@ -1,11 +1,17 @@
 const path = require("path");
-const fs = require("fs");
 
-const FraudRadar = require("./FraudRadar");
-const ReadOrders = require("./ReadOrders");
+const ReadFile = require("./ReadFile");
+const buildOrder = require("./utils/buildOrder");
 
-const readOrders = new ReadOrders(
-  fs.readFileSync(path.join(__dirname, "..", "data", "OneLineFile.txt"), "utf8")
-);
+const FraudRadar = (filePath) => {
+  const fileContent = new ReadFile(filePath).read();
+  const listOrder = fileContent
+    .split("\n")
+    .map((element) => buildOrder(element.split(",")));
 
-console.log(readOrders.getOrders());
+  console.log(listOrder);
+};
+
+FraudRadar(path.join(__dirname, "..", "data", "OneLineFile.txt"));
+
+module.exports = { FraudRadar };

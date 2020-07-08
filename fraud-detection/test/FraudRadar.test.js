@@ -1,4 +1,4 @@
-const FraudRadar = require("../src/FraudRadar");
+const FraudRadar = require("../src");
 const ReadOrders = require("../src/ReadOrders");
 const path = require("path");
 const assert = require("assert");

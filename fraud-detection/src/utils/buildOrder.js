@@ -1,3 +1,5 @@
+const Order = require("../Order");
+
 const keyMap = [
   "orderId",
   "dealId",
@@ -9,10 +11,6 @@ const keyMap = [
   "creditCard",
 ];
 
-/**
- *
- * @param {String} email
- */
 const normalizEmail = (email) => {
   let aux = email.split("@");
   let atIndex = aux[0].indexOf("+");
@@ -32,22 +30,20 @@ const normalizEmail = (email) => {
 const normalizeStreet = (street) =>
   street.replace(/st.|rd./, (str) => (str === "st." ? "street" : "road"));
 
+/**
+ *
+ * @param {*} state
+ */
 const normalizeState = (state) =>
   state.replace(/il|ca|ny/, (str) =>
-    str === "il"
-      ? "illinois"
-      : str === "ca"
-      ? "california"
-      : str === "cl"
-      ? "colorado"
-      : "new york"
+    str === "il" ? "illinois" : str === "ca" ? "california" : "new york"
   );
 
 /**
  *
  * @param {Array} order
  */
-const orderSegregation = (order) => {
+const buildOrder = (order) => {
   const segregation = {};
 
   order.forEach((element, index) => {
@@ -59,14 +55,7 @@ const orderSegregation = (order) => {
   segregation.street = normalizeStreet(segregation.street);
   segregation.state = normalizeState(segregation.state);
 
-  return segregation;
+  return new Order(segregation);
 };
 
-/**
- *
- * @param {Array} orders
- */
-const normalizeOrders = (orders) =>
-  orders.map((element) => orderSegregation(element.split(",")));
-
-module.exports = { normalizeOrders };
+module.exports = buildOrder;
