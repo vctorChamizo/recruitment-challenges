@@ -4,7 +4,7 @@
   "description": "Payvision challenge (JavaScript): Refactoring - Fraud detection",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index",
+    "dev": "nodemon ./src/FraudRadar",
     "test": "jest ./test/FraudRadar.test.js",
     "lint": "eslint ."
   },

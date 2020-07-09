@@ -1,7 +1,6 @@
-const path = require("path");
-
 const ReadFile = require("./ReadFile");
 const buildOrder = require("./utils/buildOrder");
+const checkOrders = require("./utils/checkOrders");
 
 const FraudRadar = (filePath) => {
   const fileContent = new ReadFile(filePath).read();
@@ -9,9 +8,7 @@ const FraudRadar = (filePath) => {
     .split("\n")
     .map((element) => buildOrder(element.split(",")));
 
-  console.log(listOrder);
+  return checkOrders(listOrder);
 };
 
-FraudRadar(path.join(__dirname, "..", "data", "OneLineFile.txt"));
-
-module.exports = { FraudRadar };
+module.exports = FraudRadar;

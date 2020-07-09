@@ -1,4 +1,5 @@
 const Order = require("../Order");
+const Order = require("../Order");
 
 const keyMap = [
   "orderId",
@@ -11,6 +12,11 @@ const keyMap = [
   "creditCard",
 ];
 
+/**
+ * Normalize email structure
+ *
+ * @param {String} email
+ */
 const normalizEmail = (email) => {
   let aux = email.split("@");
   let atIndex = aux[0].indexOf("+");
@@ -24,6 +30,7 @@ const normalizEmail = (email) => {
 };
 
 /**
+ * Normalize street structure
  *
  * @param {String} street
  */
@@ -31,8 +38,9 @@ const normalizeStreet = (street) =>
   street.replace(/st.|rd./, (str) => (str === "st." ? "street" : "road"));
 
 /**
+ * Normalize state structure
  *
- * @param {*} state
+ * @param {String} state
  */
 const normalizeState = (state) =>
   state.replace(/il|ca|ny/, (str) =>
@@ -40,8 +48,9 @@ const normalizeState = (state) =>
   );
 
 /**
+ * Order object builder - Attribute formatting
  *
- * @param {Array} order
+ * @param {Object} order
  */
 const buildOrder = (order) => {
   const segregation = {};
